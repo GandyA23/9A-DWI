@@ -6,7 +6,9 @@ namespace Practica01 {
         const double PRECIO = 15.9;
         const int CANTIDAD = 5;
         static void Main (string[] args) {
-            int cantidadProducto = 12;
+            Console.Write("Inserte la cantidad de productos que compró: ");
+            int cantidadProducto = Convert.ToInt32(Console.ReadLine());
+
             double total = 0.0;
             int noPluma = cantidadProducto / CANTIDAD;
 
