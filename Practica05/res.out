@@ -1,0 +1,122 @@
+Escriba el nombre del usuario 1: Escriba el saldo inicial del usuario 1: Escriba el nip para la tarjeta del usuario 1: Escriba el nombre del usuario 2: Escriba el saldo inicial del usuario 2: Escriba el nip para la tarjeta del usuario 2: Seleccione una cuenta para realizar operaciones
+1.- 1197 9637
+2.- 7130 4151
+3.- Salir del cajero
+Seleccione una opción [1-3]: Error, seleccione una opción correcta
+Seleccione una cuenta para realizar operaciones
+1.- 1197 9637
+2.- 7130 4151
+3.- Salir del cajero
+Seleccione una opción [1-3]: Error, seleccione una opción correcta
+Seleccione una cuenta para realizar operaciones
+1.- 1197 9637
+2.- 7130 4151
+3.- Salir del cajero
+Seleccione una opción [1-3]: Error, seleccione una opción correcta
+Seleccione una cuenta para realizar operaciones
+1.- 1197 9637
+2.- 7130 4151
+3.- Salir del cajero
+Seleccione una opción [1-3]: Ingrese su NIP: NIP Incorrecto, intentelo de nuevo
+Ingrese su NIP: NIP Incorrecto, intentelo de nuevo
+Ingrese su NIP: NIP Incorrecto, intentelo de nuevo
+Se ha equivocado 3 veces, regresando al menú principal
+Seleccione una cuenta para realizar operaciones
+1.- 1197 9637
+2.- 7130 4151
+3.- Salir del cajero
+Seleccione una opción [1-3]: Ingrese su NIP: Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Consulta de saldo
+Saldo: $0
+Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Transferencia entre cuentas
+Ingresa la cantidad a transferir: Lo sentimos, no es posible hacer transferencia de esa cantidad
+Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Depositar efectivo
+Ingresa la cantidad a depositar: Lo sentimos, monto invalido
+Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Depositar efectivo
+Ingresa la cantidad a depositar: Se ha hecho el deposito satisfactoriamente
+Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Transferencia entre cuentas
+Ingresa la cantidad a transferir: Se ha hecho el retiro satisfactoriamente
+Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Seleccione una cuenta para realizar operaciones
+1.- 1197 9637
+2.- 7130 4151
+3.- Salir del cajero
+Seleccione una opción [1-3]: Ingrese su NIP: Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Consulta de saldo
+Saldo: $50
+Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Retirar efectivo
+Ingresa la cantidad a retirar: Se ha hecho el retiro satisfactoriamente
+Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Consulta de saldo
+Saldo: $24.5
+Seleccione una operación
+1. Consultar saldo.
+2. Depositar efectivo.
+3. Retirar efectivo.
+4. Transferir entre cuentas.
+5. Cambiar NIP.
+6. Cerrar sesión.
+Seleccione una opción [1-6]: Seleccione una cuenta para realizar operaciones
+1.- 1197 9637
+2.- 7130 4151
+3.- Salir del cajero
+Seleccione una opción [1-3]: Ingresa una opción correcta
