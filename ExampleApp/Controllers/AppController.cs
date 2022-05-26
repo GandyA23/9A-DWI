@@ -5,7 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 */
 namespace ExampleApp.Controllers {
     public class AppController : Controller {
+        // Retorna la vista Index.cshtml
         public IActionResult Index () {
+            return View();
+        }
+
+        // Retorna la vista Info.cshtml
+        public IActionResult Info () {
             return View();
         }
     }
