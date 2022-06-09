@@ -1,0 +1,17 @@
+@if (Model.Proyectos is not null) {
+    <h4> Proyectos </h4>
+    <div class="row">
+        @foreach (var p in Model.Proyectos) {
+            <div class="card col-3 mx-auto mt-2">
+                <img class="card-img-top mt-2" style="max-height: 150px" src="~/img/@p.Imagen" alt="Imagen de @p.Titulo">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Titulo</h5>
+                    <p class="card-text">@p.Descripcion</p>
+                </div>
+                <div class="card-body">
+                    <a href="@p.Enlace" class="btn btn-info">Ver</a>
+                </div>
+            </div>
+        }
+    </div>
+}
