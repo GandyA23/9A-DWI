@@ -1,7 +1,13 @@
+using ExperienciaApp.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Necesario configurar para la inyección de código para los servicios
+builder.Services.AddTransient<IProyectoRepository, ProyectoRepository>();
+builder.Services.AddTransient<IHabilidadRepository, HabilidadRepository>();
 
 var app = builder.Build();
 

@@ -1,10 +1,8 @@
 @if (Model.Habilidades is not null) {
     <h4> Habilidades </h4>
     <div class="row">
-        <ul>
-            @foreach (var h in Model.Habilidades) {
-                <li>@h.Nombre</li>
-            }
-        </ul>
+        @foreach (var h in Model.Habilidades) {
+            <span class="border border-secondary border-bottom-0 border-top-0 col-2 mx-auto text-center">@h.Nombre</span>
+        }
     </div>
 }
