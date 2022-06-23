@@ -16,25 +16,25 @@ namespace ExperienciaApp.Services {
                 new Proyecto {
                     Titulo = "Amazon",
                     Descripcion = "E-commerce en .NET",
-                    Imagen = "imagen1.jpg",
+                    Imagen = "image1.jpg",
                     Enlace = "https://www.amazon.com"
                 },
                 new Proyecto {
                     Titulo = "Farmacia",
                     Descripcion = "Plataforma que administra medicamentos creada con Laravel 7",
-                    Imagen = "imagen2.jpg",
+                    Imagen = "image2.jpg",
                     Enlace = "https://www.farmacia.com"
                 },
                 new Proyecto {
                     Titulo = "Educación",
                     Descripcion = "Plataforma que administra alumnos en una escuela creada con Laravel 7 (Back-end) y Quasar 2 (Front-end)",
-                    Imagen = "imagen3.jpg",
+                    Imagen = "image3.jpg",
                     Enlace = "https://www.escuela.com"
                 },
                 new Proyecto {
                     Titulo = "Ferias Virtuales",
                     Descripcion = "Plataforma que administra Ferias Virtuales creada con Laravel 4",
-                    Imagen = "imagen4.jpg",
+                    Imagen = "image4.jpg",
                     Enlace = "https://www.ferias.com"
                 }
             };

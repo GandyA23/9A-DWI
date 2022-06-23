@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Contacto Page";
+}
+
+<div asp-validation-summary="All" class="text-danger">
+</div>
+
+<form asp-controller="Home" asp-action="Contacto" method="post">
+    <div class="mb-3">
+        <label for="Nombre" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" id="Nombre" name="Nombre" aria-describedby="NombreHelp">
+        <div id="NombreHelp" class="form-text">Ex. Gandy Esaú Ávila Estrada</div>
+    </div>
+    <div class="mb-3">
+        <label for="Edad" class="form-label">Edad:</label>
+        <input type="number" min="10" max="120" step="1" class="form-control" id="Edad" name="Edad" aria-describedby="EdadHelp">
+        <div id="EdadHelp" class="form-text">Ex. 20</div>
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="Email" name="Email" aria-describedby="EmailHelp">
+        <div id="EmailHelp" class="form-text">Ex. user@example.com</div>
+    </div>
+    <div class="mb-3">
+        <label for="Telefono" class="form-label">Teléfono:</label>
+        <input type="tel" class="form-control" id="Telefono" name="Telefono" aria-describedby="TelefonoHelp">
+        <div id="TelefonoHelp" class="form-text">Ex. 111-111-1111</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>

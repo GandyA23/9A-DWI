@@ -21,6 +21,17 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        // Estas líneas no se ejecutaran cuando cambie la aplicación a productivo
+        // Mostrar información con el logger
+        _logger.LogInformation("Test information in Logger");
+        _logger.LogError("Test error in Logger");
+        _logger.LogWarning("Test warning in Logger");
+
+        // Obtener variables de entorno dentro de la aplicación
+        var builder = WebApplication.CreateBuilder();
+        var directory = builder.Configuration.GetValue<string>("DirectoryImages");
+        _logger.LogInformation($"Image Directory: {directory}");
+
         // Obten los proyectos tomando solo N
         var proyectos = _proyectoRepository.ObtenerProyectos().Take(4).ToList();
         var habilidades = _habilidadRepository.ObtenerHabilidades().Take(3).ToList();
@@ -32,6 +43,17 @@ public class HomeController : Controller
             Estatus = true
         };
         return View(modelo);
+    }
+
+    [HttpGet]
+    public IActionResult Contacto() {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Contacto(Contacto contacto) {
+        _logger.LogInformation($"Contacto: {contacto.Email}");
+        return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()
