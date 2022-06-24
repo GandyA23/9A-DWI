@@ -12,6 +12,11 @@ public class HomeController : Controller
     private readonly IProyectoRepository _proyectoRepository;
     private readonly IHabilidadRepository _habilidadRepository;
 
+    // Test connection 
+    private string ConnectionString() {
+        return "";
+    }
+
     public HomeController(ILogger<HomeController> logger, IProyectoRepository proyectoRepository, IHabilidadRepository habilidadRepository)
     {
         _logger = logger;
@@ -53,6 +58,9 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Contacto(Contacto contacto) {
         _logger.LogInformation($"Contacto: {contacto.Email}");
+        // Validación del modelo
+        if (!ModelState.IsValid)
+            return View(contacto);
         return RedirectToAction("Index");
     }
 
