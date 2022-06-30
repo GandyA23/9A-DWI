@@ -11,17 +11,14 @@ public class HomeController : Controller
     // Uso del repository en el controller
     private readonly IProyectoRepository _proyectoRepository;
     private readonly IHabilidadRepository _habilidadRepository;
+    private readonly IContactoRepository _contactoRepository;
 
-    // Test connection 
-    private string ConnectionString() {
-        return "";
-    }
-
-    public HomeController(ILogger<HomeController> logger, IProyectoRepository proyectoRepository, IHabilidadRepository habilidadRepository)
+    public HomeController(ILogger<HomeController> logger, IProyectoRepository proyectoRepository, IHabilidadRepository habilidadRepository, IContactoRepository contactoRepository)
     {
         _logger = logger;
         _proyectoRepository = proyectoRepository;
         _habilidadRepository = habilidadRepository;
+        _contactoRepository = contactoRepository;
     }
 
     public IActionResult Index()
@@ -56,11 +53,12 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Contacto(Contacto contacto) {
+    public async Task<IActionResult> Contacto(Contacto contacto) {
         _logger.LogInformation($"Contacto: {contacto.Email}");
         // Validación del modelo
         if (!ModelState.IsValid)
             return View(contacto);
+        await _contactoRepository.Registrar(contacto);
         return RedirectToAction("Index");
     }
 

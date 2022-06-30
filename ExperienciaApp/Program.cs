@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 // Necesario configurar para la inyección de código para los servicios
 builder.Services.AddTransient<IProyectoRepository, ProyectoRepository>();
 builder.Services.AddTransient<IHabilidadRepository, HabilidadRepository>();
+builder.Services.AddTransient<IContactoRepository, ContactoRepository>();
 
 var app = builder.Build();
 
