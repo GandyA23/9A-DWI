@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ExperienciaApp.Models {
     public class Contacto : IValidatableObject {
+        public long Id { get; set; }
         [Required(ErrorMessage = "Campo {0} Requerido")]
         [StringLength(maximumLength: 50, MinimumLength = 3, ErrorMessage = "La longitud de {0} debe ser entre {1} y {2}")]
         [Display(Name = "Nombre:")]
@@ -27,12 +28,13 @@ namespace ExperienciaApp.Models {
         public int Edad { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext) {
-            if (Nombre != null && Nombre.Length > 0) {
+            if (Nombre != null && Nombre.Length > 0)
+            {
                 var primeraLetra = Nombre[0].ToString();
-                
-                // Verifica si la primera letra no es mayuscula
-                if (!primeraLetra.Equals(primeraLetra.ToUpper()))
-                    yield return new ValidationResult("La primera letra debe de ser mayuscula", new[] { nameof(Nombre) });
+                if (primeraLetra != primeraLetra.ToUpper())
+                {
+                    yield return new ValidationResult("La primera letra debe ser mayúscula", new[] { nameof(Nombre) });
+                }
             }
         }
     }
