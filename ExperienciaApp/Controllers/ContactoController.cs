@@ -73,17 +73,6 @@ namespace ExperienciaApp.Controllers
                 return RedirectToAction("Listar");
         }
 
-        [AcceptVerbs("GET", "POST")]
-        public async Task<IActionResult> VerificarExisteCorreo(string correoElectronico)
-        {
-                var existeCorreo = await _contactoRepository.VerificarExisteCorreo(correoElectronico);
-                if(existeCorreo)
-                {
-                    return Json($"El correo {correoElectronico} ya ha sido registrado.");
-                }
-                return Json(true);
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
