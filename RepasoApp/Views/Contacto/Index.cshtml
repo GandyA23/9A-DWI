@@ -1,0 +1,87 @@
+@model ContactoViewModel
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Nuevo Registro
+</button>
+
+@if (Model.Contactos is not null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>Edad</td>
+                <td>Correo electrónico</td>
+                <td>Teléfono</td>
+                <td colspan="2">Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contacto in Model.Contactos)
+            {
+                <tr>
+                    <td>@contacto.Nombre</td>
+                    <td>@contacto.Edad</td>
+                    <td>@contacto.CorreoElectronico</td>
+                    <td>@contacto.Telefono</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Actualizar" asp-route-id="@contacto.Id">Actualizar</a>
+                    </td>
+                    <td>
+                      <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@contacto.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-controller="Contacto" asp-action="Contacto" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label asp-for="Nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" asp-for="Nombre">
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CorreoElectronico" class="form-label">Correo Electronico</label>
+                        <input type="text" class="form-control" asp-for="CorreoElectronico">
+                        <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Edad" class="form-label">Edad</label>
+                        <input type="text" class="form-control" asp-for="Edad">
+                        <span asp-validation-for="Edad" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Telefono" class="form-label">Telrfono</label>
+                        <input type="text" class="form-control" asp-for="Telefono">
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+ @section Scripts{
+    <script>
+        window.onload = function(){
+            if (@Model.AbrirModel === 1){
+                $('#exampleModal').modal('show');
+            }
+        }
+    </script>
+ }

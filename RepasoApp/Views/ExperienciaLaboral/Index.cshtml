@@ -1,0 +1,94 @@
+@model ExperienciaLaboralViewModel
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Nuevo Registro
+</button>
+
+@if (Model.ExperienciaLaborales is not null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>Edad</td>
+                <td>Correo electrónico</td>
+                <td>Teléfono</td>
+                <td colspan="2">Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contacto in Model.ExperienciaLaborales)
+            {
+                <tr>
+                    <td>@contacto.Cargo</td>
+                    <td>@contacto.Descripcion</td>
+                    <td>@contacto.NombreEmpresa</td>
+                    <td>@contacto.TipoEmpleoId</td>
+                    <td>@contacto.EntidadFederativaId</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Actualizar" asp-route-id="@contacto.Id">Actualizar</a>
+                    </td>
+                    <td>
+                      <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@contacto.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-controller="ExperienciaLaboral" asp-action="Registrar" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label asp-for="Cargo" class="form-label">Cargo</label>
+                        <input type="text" class="form-control" asp-for="Cargo">
+                        <span asp-validation-for="Cargo" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Descripcion" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" asp-for="Descripcion">
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NombreEmpresa" class="form-label">Nombre empresa</label>
+                        <input type="text" class="form-control" asp-for="NombreEmpresa">
+                        <span asp-validation-for="NombreEmpresa" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="TipoEmpleoId" class="form-label">Tipo empleo</label>
+                        <select class="form-select" asp-for="TipoEmpleoId" asp-items="Model.TiposEmpleos"></select>
+                        <span asp-validation-for="TipoEmpleoId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="EntidadFederativaId" class="form-label">Entidad federativa</label>
+                        <select class="form-select" asp-for="EntidadFederativaId" asp-items="Model.EntidadesFederativas"></select>
+                        <span asp-validation-for="EntidadFederativaId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+ @section Scripts{
+    <script>
+        window.onload = function(){
+            if (@Model.AbrirModel === 1){
+                $('#exampleModal').modal('show');
+            }
+        }
+    </script>
+ }
+ 

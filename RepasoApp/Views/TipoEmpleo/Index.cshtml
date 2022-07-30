@@ -1,0 +1,61 @@
+@model TipoEmpleoViewModel
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Nuevo Registro
+</button>
+
+@if (Model.TipoEmpleos is not null)
+{
+    <table class="table">
+        <thead style="text-align: center; background-color: #71FFFF;">
+            <tr>
+                <td>Nombre</td>
+                <td colspan="2">Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleo in Model.TipoEmpleos)
+            {
+                <tr>
+                    <td>@empleo.Nombre</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Actualizar" asp-route-id="@empleo.Id">Actualizar</a>
+                    </td>
+                    <td>
+                      <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@empleo.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-controller="TipoEmpleo" asp-action="Registrar" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label asp-for="Nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" asp-for="Nombre">
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}
