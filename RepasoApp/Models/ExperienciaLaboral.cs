@@ -13,5 +13,7 @@ namespace RepasoApp.Models
         public string? Descripcion {get; set;}
         public long TipoEmpleoId { get; set;}
         public long EntidadFederativaId {get; set;}
+        public string? TipoEmpleo {get; set;}
+        public string? EntidadFederativa {get; set;}
     }
 }

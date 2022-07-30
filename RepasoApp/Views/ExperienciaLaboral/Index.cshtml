@@ -9,10 +9,11 @@
     <table class="table">
         <thead>
             <tr>
-                <td>Nombre</td>
-                <td>Edad</td>
-                <td>Correo electrónico</td>
-                <td>Teléfono</td>
+                <td>Cargo</td>
+                <td>Descripción</td>
+                <td>Nombre de la empresa</td>
+                <td>Tipo de Empleo</td>
+                <td>Entidad Federativa</td>
                 <td colspan="2">Acciones</td>
             </tr>
         </thead>
@@ -23,8 +24,8 @@
                     <td>@contacto.Cargo</td>
                     <td>@contacto.Descripcion</td>
                     <td>@contacto.NombreEmpresa</td>
-                    <td>@contacto.TipoEmpleoId</td>
-                    <td>@contacto.EntidadFederativaId</td>
+                    <td>@contacto.TipoEmpleo</td>
+                    <td>@contacto.EntidadFederativa</td>
                     <td>
                         <a class="btn btn-primary" asp-action="Actualizar" asp-route-id="@contacto.Id">Actualizar</a>
                     </td>
@@ -82,13 +83,13 @@
     </div>
 </div>
 
- @section Scripts{
-    <script>
-        window.onload = function(){
-            if (@Model.AbrirModel === 1){
-                $('#exampleModal').modal('show');
-            }
+@section Scripts{
+<script>
+    window.onload = function(){
+        if (@Model.AbrirModel === 1){
+            $('#exampleModal').modal('show');
         }
-    </script>
- }
+    }
+</script>
+}
  

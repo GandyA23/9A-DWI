@@ -44,11 +44,15 @@ namespace RepasoApp.Services
         {
             using var connection = new SqlConnection(_connectionString);
             return await connection.QueryAsync<ExperienciaLaboral>(
-                @"SELECT X.*, T.Id FROM ExperienciaLaboral AS X 
-                INNER JOIN TipoEmpleo AS T 
-                ON X.TipoEmpleoId = T.Id
-                ORDER BY X.Id DESC;");
+                @"SELECT x.Id, x.Cargo, x.NombreEmpresa, x.Descripcion, 
+                t.Id AS TipoEmpleoId, t.Nombre AS TipoEmpleo, 
+                e.Id AS EntidadFederativaId, e.Nombre AS EntidadFederativa 
+                FROM ExperienciaLaboral AS x
+                INNER JOIN TipoEmpleo AS t 
+                ON x.TipoEmpleoId = t.Id
+                INNER JOIN EntidadFederativa AS e 
+                ON x.EntidadFederativaId = e.Id
+                ORDER BY x.Id DESC;");
         }
-
     }
 }

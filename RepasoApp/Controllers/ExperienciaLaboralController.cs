@@ -13,24 +13,24 @@ namespace RepasoApp.Controllers
         private readonly IExperienciaLaboralRepository _experienciaLaboralRepository;
         private readonly ITipoEmpleoRepository _tipoEmpleoRepository;
         private readonly IEntidadFederativaRepository _entidadFederativaRepository;
-        private readonly IMapper _autoMapper;
+        private readonly IMapper _mapper;
 
-        public ExperienciaLaboralController(ILogger<ExperienciaLaboralController> logger, IExperienciaLaboralRepository ExperienciaLaboralRepository, ITipoEmpleoRepository TipoEmpleoRepository, IEntidadFederativaRepository EntidadFederativaRepository, IMapper autoMapper)
+        public ExperienciaLaboralController(ILogger<ExperienciaLaboralController> logger, IExperienciaLaboralRepository ExperienciaLaboralRepository, ITipoEmpleoRepository TipoEmpleoRepository, IEntidadFederativaRepository EntidadFederativaRepository, IMapper Mapper)
         {
             _logger = logger;
             _experienciaLaboralRepository = ExperienciaLaboralRepository;
             _entidadFederativaRepository = EntidadFederativaRepository;
             _tipoEmpleoRepository = TipoEmpleoRepository;
-            _autoMapper = autoMapper;
+            _mapper = Mapper;
         }
 
         [HttpPost]
         public async Task<IActionResult> Registrar(ExperienciaLaboral experienciaLaboral)
         {
            if (!ModelState.IsValid) {
-                var modelo = await ObtenerExperienciaLaboralViewModel();
+                var modelo = await ObtenerExperienciaLaboralViewModel(experienciaLaboral);
                 modelo.AbrirModel = 1;
-                return View("Index",modelo);
+                return View("Index", modelo);
            }
            await _experienciaLaboralRepository.Registrar(experienciaLaboral);
            return RedirectToAction("Index");
@@ -39,7 +39,7 @@ namespace RepasoApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var modelo = await ObtenerExperienciaLaboralViewModel();
+            var modelo = await ObtenerExperienciaLaboralViewModel(new ExperienciaLaboral());
             return View(modelo);
         }
 
@@ -53,12 +53,21 @@ namespace RepasoApp.Controllers
             return tiposEmpleos.Select(x => new SelectListItem(x.Nombre, x.Id.ToString()));
         }
 
-        private async Task<ExperienciaLaboralViewModel> ObtenerExperienciaLaboralViewModel(){
+        private async Task<ExperienciaLaboralViewModel> ObtenerExperienciaLaboralViewModel(ExperienciaLaboral experienciaLaboral){
             var modelo = new ExperienciaLaboralViewModel();
+
+            modelo = _mapper.Map<ExperienciaLaboralViewModel>(experienciaLaboral);
             modelo.ExperienciaLaborales = await _experienciaLaboralRepository.Listar();
             modelo.TiposEmpleos = await ObtenerTiposEmpleos();
             modelo.EntidadesFederativas = await ObtenerEntidadesFederativas();
+            
             return modelo;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Actualizar (long id)
+        {
+            return View();
         }
 
     }
