@@ -67,8 +67,32 @@ namespace RepasoApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Actualizar (long id)
         {
-            return View();
+            var experienciaLaboral = await _experienciaLaboralRepository.BuscarPorId(id);
+
+            if (experienciaLaboral != null) {
+                var modelo = await ObtenerExperienciaLaboralViewModel(experienciaLaboral);
+                return View(modelo);
+            }
+
+            return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Actualizar (ExperienciaLaboral experienciaLaboral)
+        {
+            if (!ModelState.IsValid) {
+                var modelo = await ObtenerExperienciaLaboralViewModel(experienciaLaboral);
+                return View("Index", modelo);
+           }
+           await _experienciaLaboralRepository.Actualizar(experienciaLaboral);
+           return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Eliminar (long id)
+        {
+            await _experienciaLaboralRepository.Eliminar(id);
+            return RedirectToAction("Index");
+        }
     }
 }

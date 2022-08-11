@@ -9,6 +9,8 @@ namespace RepasoApp.Services
         Task Registrar(ExperienciaLaboral experienciaLaboral);
         Task<IEnumerable<ExperienciaLaboral>> Listar();
         Task<ExperienciaLaboral> BuscarPorId(long id);
+        Task Actualizar(ExperienciaLaboral experienciaLaboral);
+        Task Eliminar(long id);
     }
 
     public class ExperienciaLaboralRepository : IExperienciaLaboralRepository
@@ -33,11 +35,15 @@ namespace RepasoApp.Services
         {
             using var connection = new SqlConnection(_connectionString);
             return await connection.QueryFirstOrDefaultAsync<ExperienciaLaboral>(
-                @"SELECT X.Id, X.Cargo, X.NombreEmpresa, X.Descripcion 
-                FROM ExperienciaLaboral AS X 
-                INNER JOIN TipoEmpleo AS T 
-                ON X.TipoEmpleoId = T.Id
-                WHERE X.Id = @Id", new { id });
+                @"SELECT x.Id, x.Cargo, x.NombreEmpresa, x.Descripcion, 
+                t.Id AS TipoEmpleoId, t.Nombre AS TipoEmpleo, 
+                e.Id AS EntidadFederativaId, e.Nombre AS EntidadFederativa 
+                FROM ExperienciaLaboral AS x
+                INNER JOIN TipoEmpleo AS t 
+                ON x.TipoEmpleoId = t.Id
+                INNER JOIN EntidadFederativa AS e 
+                ON x.EntidadFederativaId = e.Id
+                WHERE x.Id = @Id", new { id });
         }
 
         public async Task<IEnumerable<ExperienciaLaboral>> Listar()
@@ -53,6 +59,19 @@ namespace RepasoApp.Services
                 INNER JOIN EntidadFederativa AS e 
                 ON x.EntidadFederativaId = e.Id
                 ORDER BY x.Id DESC;");
+        }
+
+        public async Task Actualizar(ExperienciaLaboral experienciaLaboral)
+        {
+            using var connection = new SqlConnection(_connectionString);
+            await connection.ExecuteAsync(
+                @"UPDATE ExperienciaLaboral SET Cargo = @Cargo, NombreEmpresa = @NombreEmpresa, Descripcion = @Descripcion, TipoEmpleoId = @TipoEmpleoId, EntidadFederativaId = @EntidadFederativaId WHERE Id = @Id", experienciaLaboral);
+        }
+
+        public async Task Eliminar(long id)
+        {
+            using var connection = new SqlConnection(_connectionString);
+            await connection.ExecuteAsync(@"DELETE FROM ExperienciaLaboral WHERE Id = @Id", new { id });
         }
     }
 }
